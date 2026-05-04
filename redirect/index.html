@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
     <title>Volvo Companion — Redirecting…</title>
     <meta name="robots" content="noindex,nofollow" />
     <style>
@@ -33,8 +34,18 @@
     </main>
     <script>
       (function () {
-        var search = window.location.search || "";
-        var deepLink = "volvo-companion://oauth/callback" + search;
+        // Whitelist only the OAuth-callback parameters defined by RFC 6749 §4.1.2
+        // and the OIDC scope echo. Anything else from the source URL is dropped
+        // so the bridge cannot be coaxed into smuggling extra params into the app.
+        var ALLOWED = ["code", "state", "error", "error_description", "scope"];
+        var src = new URLSearchParams(window.location.search || "");
+        var safe = new URLSearchParams();
+        ALLOWED.forEach(function (k) {
+          var v = src.get(k);
+          if (v !== null) safe.set(k, v);
+        });
+        var query = safe.toString();
+        var deepLink = "volvo-companion://oauth/callback" + (query ? "?" + query : "");
         document.getElementById("open").href = deepLink;
         // Auto-redirect immediately. If the app is installed it'll intercept the intent.
         window.location.replace(deepLink);

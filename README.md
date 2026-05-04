@@ -1,6 +1,6 @@
 # volvo-oauth-bridge
 
-Static HTTPS bridge for the Volvo Companion Android app's OAuth callback. Volvo's developer portal does not accept custom-scheme redirect URIs (`volvo-companion://...`), so we register the HTTPS URL of this page in the portal. The page then forwards `?code=&state=` to the deep link `volvo-companion://oauth/callback?…` which the installed app catches via its intent-filter.
+Static HTTPS bridge for the Vlv Companion Android app's OAuth callback. Volvo's developer portal does not accept custom-scheme redirect URIs (`volvo-companion://...`), so we register the HTTPS URL of this page in the portal. The page then forwards `?code=&state=` to the deep link `volvo-companion://oauth/callback?…` which the installed app catches via its intent-filter. (The deep-link scheme stays `volvo-companion://` because that's what's registered with the Volvo developer portal — it's an internal identifier, not the user-facing brand.)
 
 ## Deploy to GitHub Pages
 
@@ -27,7 +27,7 @@ Static HTTPS bridge for the Volvo Companion Android app's OAuth callback. Volvo'
    # should show the bridge HTML
    ```
 
-The bridge is served at `https://volvo.roussel-zeter.eu/redirect/` (with the trailing slash — the file lives at `redirect/index.html`). Register exactly that URL in the Volvo portal AND paste the same string into the **Redirect URI** field of the Volvo Companion app's sign-in screen. They must be byte-identical.
+The bridge is served at `https://volvo.roussel-zeter.eu/redirect/` (with the trailing slash — the file lives at `redirect/index.html`). Register exactly that URL in the Volvo developer portal AND paste the same string into the **Redirect URI** field of the Vlv Companion app's sign-in screen. They must be byte-identical.
 
 ## How it works
 

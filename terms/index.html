@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="referrer" content="no-referrer" />
+    <title>Terms of Use — volvo.roussel-zeter.eu</title>
+    <style>
+      :root { color-scheme: dark light; }
+      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+             background: #0b0c0f; color: #e8eaed; margin: 0;
+             padding: 32px 24px; line-height: 1.55; }
+      main { max-width: 720px; margin: 0 auto; }
+      h1 { font-size: 26px; margin: 0 0 8px; }
+      h2 { font-size: 17px; margin: 28px 0 8px; color: #cfe0ff; }
+      p { color: #bdc1c6; margin: 8px 0; }
+      ul { color: #bdc1c6; padding-left: 20px; }
+      li { margin: 4px 0; }
+      code { font-family: ui-monospace, monospace; color: #cfe0ff; background: rgba(255,255,255,0.04);
+             padding: 1px 6px; border-radius: 4px; }
+      a { color: #8ab4f8; }
+      .meta { color: #7f868d; font-size: 12px; margin-top: 24px; border-top: 1px solid rgba(255,255,255,0.08);
+              padding-top: 12px; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Terms of Use</h1>
+      <p><strong>volvo.roussel-zeter.eu</strong> hosts a small static HTTPS page that redirects an OAuth 2.0 authorisation response into the <em>Vlv Companion</em> Android app via a custom-scheme deep link. It is offered as a free courtesy. By using it, you agree to the terms below.</p>
+
+      <h2>1. As-is, no warranty</h2>
+      <p>This service is provided <strong>&ldquo;as is&rdquo; and &ldquo;as available&rdquo;</strong>, without warranty of any kind, express or implied — including without limitation any warranty of merchantability, fitness for a particular purpose, accuracy, security, or non-infringement.</p>
+
+      <h2>2. No guarantee of availability</h2>
+      <p>There is no service-level commitment. The page may be unavailable, slow, broken, or removed entirely at any time, with or without notice. If you rely on it for an OAuth flow that matters to you, host your own copy of <a href="https://github.com/Rachyandco/vlv-companion/blob/main/redirect/index.html">the redirect page</a> on infrastructure you control.</p>
+
+      <h2>3. Limitation of liability</h2>
+      <p>To the maximum extent permitted by law, the operator of this domain shall not be liable for any direct, indirect, incidental, consequential, special, exemplary, or punitive damages arising out of or in connection with your use of, or inability to use, this service — including without limitation lost data, lost vehicles access, missed commands, account lockouts, or any other loss of any kind, even if advised of the possibility of such damages.</p>
+
+      <h2>4. Use at your own risk</h2>
+      <p>You are solely responsible for any decision to send OAuth parameters through this bridge, and for verifying that the deep link it produces lands in the app you expect. You can inspect the page&rsquo;s source on the live URL or in the linked GitHub repo before using it.</p>
+
+      <h2>5. What the bridge does and does not do</h2>
+      <ul>
+        <li>The bridge runs entirely in your browser. It receives the query string from Volvo&rsquo;s OAuth callback (only <code>code</code>, <code>state</code>, <code>error</code>, <code>error_description</code>, and <code>scope</code> are forwarded; everything else is dropped) and immediately calls <code>window.location.replace</code> to a <code>volvo-companion://oauth/callback?…</code> deep link.</li>
+        <li>No request data is sent to or stored by any backend operated by us. The page is static.</li>
+        <li>Standard hosting-provider logs (Cloudflare or equivalent) may record requests for abuse-prevention purposes; the operator does not control the retention policy of those logs.</li>
+        <li>A <code>&lt;meta name=&quot;referrer&quot; content=&quot;no-referrer&quot;&gt;</code> tag is set so the deep link does not leak the OAuth code back to Volvo as <code>Referer</code>.</li>
+      </ul>
+
+      <h2>6. Not affiliated with Volvo</h2>
+      <p>Neither this service nor the Vlv Companion app it redirects into is affiliated with, endorsed by, sponsored by, certified by, or otherwise authorised by Volvo Car Corporation, AB Volvo, Volvo Car USA, LLC, the Volvo Trademark Holding AB, or any other Volvo company. The names &ldquo;VOLVO&rdquo;, the Volvo iron-mark, and any related marks are trademarks of their respective owners and are referenced only to factually describe the developer APIs the redirect targets.</p>
+
+      <h2>7. Free to use, no fees</h2>
+      <p>The service is free of charge and the operator does not solicit payment for its use. You are free to host your own copy of the redirect page on your own domain at any time; the source is GPL-3.0-or-later licensed.</p>
+
+      <h2>8. Changes</h2>
+      <p>These terms may be amended at any time. The current version is what is published at this URL. Continued use after a change constitutes acceptance.</p>
+
+      <h2>9. Governing law</h2>
+      <p>To the extent any dispute arises in connection with this service, it is governed by the law of the operator&rsquo;s country of residence. The operator reserves all defences available under applicable law, including any statutory limitations on liability for hosts of free, non-commercial services.</p>
+
+      <p class="meta">Last updated: 4 May 2026.</p>
+    </main>
+  </body>
+</html>
